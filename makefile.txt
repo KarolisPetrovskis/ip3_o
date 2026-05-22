@@ -1,0 +1,31 @@
+CXX = g++
+CXXFLAGS = -std=c++17 -Wall -Wextra -pedantic
+
+MODULE_SRCS = PowerPlant.cpp CoalPlant.cpp SolarPlant.cpp GridStrategy.cpp PowerGrid.cpp
+MODULE_OBJS = $(MODULE_SRCS:.cpp=.o)
+
+all: demo test
+
+modules: $(MODULE_OBJS)
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+demo: $(MODULE_OBJS) demo.o
+	$(CXX) $(CXXFLAGS) -o demo $(MODULE_OBJS) demo.o
+
+run-demo: demo
+	./demo
+
+test: $(MODULE_OBJS) test.o
+	$(CXX) $(CXXFLAGS) -o test $(MODULE_OBJS) test.o
+
+run-test: test
+	./test
+
+clean:
+	rm -f *.o demo test
+
+rebuild: clean all
+
+.PHONY: all modules run-demo run-test clean rebuild

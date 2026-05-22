@@ -1,0 +1,10 @@
+/**
+ * Class: WindPlant
+ * Inherits publicly from PowerPlant.
+ * Fields: Requires private double diameter.
+ * Constructor: WindPlant(std::string name, double efficiency, double diameter).
+ * Getters: getDiameter() to return the diameter.
+ * Methods to override:
+ * - clone(): returns a new WindPlant with the same name, efficiency, and diameter.
+ * - calculateOutput(): returns efficiency * diameter.
+ */
